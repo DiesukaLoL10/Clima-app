@@ -1,15 +1,51 @@
 
-.container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.unitsSelector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
 }
 
-.wheatherCard{
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid black;
+.unitButton {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
+.unitButton:hover {
+  background: #eaeaea;
+}
+
+.unitButtonActive {
+  background: #333;
+  color: white;
+  border-color: #333;
+}
+
+
+.historial {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 10px 0 15px;
+}
+
+.historialButton {
+  padding: 6px 10px;
+  border-radius: 16px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.historialButton:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
 }

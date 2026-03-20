@@ -1,51 +1,42 @@
+.searchFormCustom {
+          display: flex;
+          gap: 12px;
+          width: 100%;
+          margin-bottom: 24px;
+        }
 
-$color-bg: #ffffff;
-$color-card-bg: #f8f9fa;
-$color-text: #212529;
-$color-text-muted: #6c757d;
-$color-border: #000000; 
-$radius: 12px;
-$shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        .searchInputCustom {
+          flex: 1;
+          padding: 12px 16px;
+          border: 1px solid #000;
+          border-radius: 8px;
+          font-size: 1rem;
+          outline: none;
+          transition: border-color 0.2s;
+        }
 
+        .searchInputCustom:focus {
+          border-color: #555;
+        }
 
-.search-container {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin-bottom: 30px;
-  width: 100%;
+        .searchButtonCustom {
+          padding: 12px 24px;
+          background-color: #000;
+          color: #fff;
+          border: none;
+          border-radius: 8px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
 
-  input {
-    flex: 1;
-    max-width: 300px;
-    padding: 12px 16px;
-    border: 1px solid $color-border;
-    border-radius: 8px;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.2s ease;
+        .searchButtonCustom:hover:not(:disabled) {
+          background-color: #333;
+        }
 
-    &:focus {
-      border-color: #3498db;
-      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-    }
-  }
-
-  button {
-    padding: 12px 24px;
-    background-color: transparent;
-    border: 1px solid $color-border;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-
-    &:hover {
-      background-color: #f1f1f1;
-    }
-
-    &:active {
-      transform: scale(0.98);
-    }
-  }
-}
+        .searchButtonCustom:disabled {
+          background-color: #ccc;
+          color: #888;
+          cursor: not-allowed;
+          border: 1px solid #bbb;
+        }

@@ -1,118 +1,227 @@
-$border-color: #000000;
-$text-main: #222222;
-$text-muted: #666666;
+.weatherDetailsCard {
+  margin: 10px auto;
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  color: #333;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
 
-.resultBox {
-  border: 1px solid $border-color;
-  border-radius: 12px;
-  padding: 2rem;
-  background-color: #ffffff;
-  margin-top: 1rem;
+/* =========================
+   EMPTY STATE
+========================= */
+.emptyState {
+  padding: 40px;
+  text-align: center;
+  color: #888;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* =========================
+   HEADER
+========================= */
+.headerSection {
+  margin-bottom: 20px;
+}
+
+.cityName {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.locationMeta {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.coordinates {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 0.75rem;
+  color: #888;
+  font-family: monospace;
+}
+
+/* =========================
+   TEMPERATURE
+========================= */
+.mainTempDisplay {
+  padding: 15px 0;
+}
+
+.tempGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.currentTemp {
+  font-size: 4.5rem;
+  font-weight: 300;
+  color: #000;
+}
+
+.weatherIcon {
+  width: 90px;
+  height: 90px;
+}
+
+.weatherDescription {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin: 0;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.feelsLike {
+  color: #777;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* =========================
+   METRICS GRID (CLAVE)
+========================= */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: 1fr; /* MOBILE */
+  gap: 10px;
+  margin: 25px 0;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .metricsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1200px) {
+  .metricsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* =========================
+   METRIC CARD
+========================= */
+.metricItem {
+  background-color: #fafafa;
+  padding: 15px 10px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
 
-  .cityName {
-    font-size: 2.2rem;
-    font-weight: 800;
-    margin: 0 0 1rem 0;
-    color: $text-main;
-    letter-spacing: -0.5px;
-    color: rgb(45, 67, 168);
-  }
+.metricItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
 
-  .mainInfo {
-    margin: 1rem 0 2rem 0;
-    
-    .tempWrapper {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      line-height: 1;
+.label {
+  font-size: 0.65rem;
+  color: #999;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
 
-      .tempValue {
-        font-size: 5rem;
-        font-weight: 300;
-        color: $text-main;
-        
-      }
+.value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #222;
+}
 
-      .tempUnit {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-top: 0.8rem;
-        margin-left: 2px;
-      }
-    }
+.subValue {
+  font-size: 0.6rem;
+  color: #bbb;
+}
 
-    .description {
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: $text-muted;
-      letter-spacing: 2px;
-      margin-top: 0.5rem;
-      color: rgb(45, 67, 168);
-    }
-  }
+/* =========================
+   SUN INFO
+========================= */
+.sunSection {
+  padding-top: 15px;
+  border-top: 1px dashed #ccc;
+}
 
-  .detailsGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    width: 100%;
-    gap: 1rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #000000;
+.sunInfo {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  color: #444;
+}
 
-    .detailItem {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+.timezone {
+  color: #aaa;
+  font-size: 0.7rem;
+}
 
-      .detailLabel {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        color: #aaaaaa;
-        margin-bottom: 4px;
-        font-weight: 600;
-      }
+/* =========================
+   LOADING (extra)
+========================= */
+.loadingContainer {
+  text-align: center;
+  margin-top: 20px;
+}
 
-      .detailValue {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: $text-main;
-      }
-    }
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 4px solid #ccc;
+  border-top: 4px solid #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
-.emptyState {
-  color: #999999;
-  padding: 3rem 0;
-  font-style: italic;
-  color: rgb(45, 67, 168);
-  
-  strong {
-    color: #444444;
-  }
-}
+/* =========================
+   ERROR BOX (extra)
+========================= */
+.errorBox {
+  background: #ffe5e5;
+  border: 1px solid #ff4d4f;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 10px;
+  color: #a8071a;
 
-
-@media (max-width: 450px) {
-  .resultBox .detailsGrid {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    
-    .detailItem {
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #f9f9f9;
-      
-      .detailLabel { margin-bottom: 0; }
-    }
+  button {
+    margin-top: 8px;
+    padding: 6px 10px;
+    border: none;
+    background: #ff4d4f;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
   }
 }
