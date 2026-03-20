@@ -1,23 +1,26 @@
-<h1>Clima app</h1>
-Aplicación web para consultar el clima actual de una ciudad, consumiendo la API de OpenWeather y aplicando buenas prácticas de desarrollo tanto en frontend como en backend.
+<h1>Weather App – Prueba Técnica</h1>
 
+<p>Aplicación web para consultar el clima actual de una ciudad, consumiendo la API de OpenWeather y aplicando buenas prácticas de desarrollo tanto en frontend como en backend.</p>
 
-El usuario puede:
+<hr />
 
-Buscar una ciudad o estado
+<h2>Demo funcional</h2>
 
-Ver información detallada del clima
+<p>El usuario puede:</p>
+<ul>
+  <li>Buscar una ciudad o estado</li>
+  <li>Ver información detallada del clima</li>
+  <li>Cambiar entre unidades (°C/kmh y °F/mph)</li>
+  <li>Reintentar en caso de error sin perder el input</li>
+  <li>Consultar búsquedas recientes</li>
+  <li>Mantener estado entre recargas</li>
+</ul>
 
-Cambiar entre unidades (°C/kmh y °F/mph)
+<hr />
 
-Reintentar en caso de error sin perder el input
+<h2>Arquitectura</h2>
 
-Consultar búsquedas recientes
-
-Mantener estado entre recargas
-
-El proyecto está dividido en dos capas:
-
+<pre>
 backend/
   index.js
 
@@ -30,136 +33,142 @@ frontend/
     AlertaError.jsx
     Cargando.jsx
   styles/
+</pre>
 
-Backend
+<h3>Backend</h3>
+<ul>
+  <li>Node.js + Express</li>
+  <li>Consumo de API externa (OpenWeather)</li>
+  <li>Geocoding previo para mayor precisión</li>
+  <li>Normalización de respuesta</li>
+  <li>Cache en memoria con TTL</li>
+</ul>
 
-Node.js + Express
+<h3>Frontend</h3>
+<ul>
+  <li>React + Next.js (App Router)</li>
+  <li>Manejo de estado con hooks</li>
+  <li>Componentes desacoplados</li>
+  <li>SCSS modular</li>
+  <li>UX orientado a estados (loading, error, empty)</li>
+</ul>
 
-Consumo de API externa (OpenWeather)
+<hr />
 
-Geocoding previo para mayor precisión
+<h2>Instalación y ejecución</h2>
 
-Normalización de respuesta
+<h3>1. Clonar repositorio</h3>
 
-Cache en memoria con TTL
-
-
-Frontend
-
-React + Next.js (App Router)
-
-Manejo de estado con hooks
-
-Componentes desacoplados
-
-SCSS modular
-
-UX orientado a estados (loading, error, empty)
-
-
- Instalación y ejecución
-1. Clonar repositorio
-git clone <repo-url>
+<pre>
+git clone &lt;repo-url&gt;
 cd weather-app
-2. Backend
+</pre>
+
+<h3>2. Backend</h3>
+
+<pre>
 cd backend
 npm install
+</pre>
 
-Crear archivo .env:
+<p>Crear archivo <code>.env</code>:</p>
 
+<pre>
 API_KEY=tu_api_key_de_openweather
 PORT=3001
+</pre>
 
-Ejecutar servidor:
+<p>Ejecutar servidor:</p>
 
+<pre>
 node index.js
-3. Frontend
+</pre>
+
+<h3>3. Frontend</h3>
+
+<pre>
 cd frontend
 npm install
 npm run dev
+</pre>
 
-Abrir en navegador:
+<p>Abrir en navegador:</p>
 
+<pre>
 http://localhost:3000
- Decisiones técnicas
- Uso de Geocoding
+</pre>
 
-Se utiliza la API de geocoding antes de consultar el clima para:
+<hr />
 
-Evitar ambigüedad en nombres de ciudades
+<h2>Decisiones técnicas</h2>
 
-Obtener coordenadas precisas
+<h3>Uso de Geocoding</h3>
+<p>Se utiliza la API de geocoding antes de consultar el clima para evitar ambigüedad en nombres de ciudades y obtener coordenadas precisas.</p>
 
- Normalización de datos
+<h3>Normalización de datos</h3>
+<p>El backend transforma la respuesta de OpenWeather a un formato consistente para el frontend, reduciendo acoplamiento.</p>
 
-El backend transforma la respuesta de OpenWeather a un formato consistente para el frontend, reduciendo acoplamiento.
+<h3>Cache con TTL</h3>
+<p>Se implementa cache en memoria (5 minutos) para reducir llamadas repetidas y mejorar rendimiento.</p>
 
- Cache con TTL
+<h3>Manejo de estados en UI</h3>
+<p>Se contemplan escenarios de loading, error con reintento y estado vacío inicial.</p>
 
-Se implementa cache en memoria (5 minutos) para:
+<h3>Persistencia</h3>
+<p>Se utiliza <code>sessionStorage</code> para guardar la última ciudad consultada, unidades seleccionadas y último resultado.</p>
 
-Reducir llamadas repetidas
+<hr />
 
-Mejorar rendimiento
+<h2>UX y Responsividad</h2>
 
- Manejo de estados en UI
+<ul>
+  <li>Jerarquía visual clara (ciudad y temperatura como elementos principales)</li>
+  <li>Diseño responsive:
+    <ul>
+      <li>Mobile: 1 columna</li>
+      <li>Tablet: 2 columnas</li>
+      <li>Desktop: 3–4 columnas</li>
+    </ul>
+  </li>
+  <li>Feedback visual en acciones</li>
+  <li>Botones interactivos con estados visuales</li>
+</ul>
 
-Se contemplan todos los escenarios:
+<hr />
 
-Loading
+<h2>Funcionalidades adicionales</h2>
 
-Error con reintento
+<ul>
+  <li>Historial de últimas búsquedas (hasta 5)</li>
+  <li>Selector de unidades (métrico / imperial)</li>
+  <li>Reintento sin perder input</li>
+  <li>Persistencia entre recargas</li>
+  <li>Cache backend con TTL</li>
+</ul>
 
-Estado vacío inicial
+<hr />
 
- Persistencia
+<h2>Manejo de errores</h2>
 
-Se utiliza sessionStorage para:
+<p>Se contemplan distintos escenarios:</p>
+<ul>
+  <li>Ciudad no encontrada</li>
+  <li>Error de red</li>
+  <li>API key inválida</li>
+  <li>Límite de peticiones</li>
+</ul>
 
-Última ciudad consultada
+<p>Cada caso muestra un mensaje claro al usuario.</p>
 
-Unidades seleccionadas
+<hr />
 
-Último resultado
 
- UX y Responsividad
 
-Jerarquía visual clara (ciudad + temperatura dominante)
+<hr />
 
-Diseño responsive:
+<h2>Autor</h2>
 
-Mobile: 1 columna
+<p>Desarrollado como parte de una prueba técnica.</p>
 
-Tablet: 2 columnas
+<hr />
 
-Desktop: 3–4 columnas
-
-Feedback visual en acciones
-
-Botones interactivos (hover, active states)
-
-Funcionalidades adicionales
-
-Historial de últimas búsquedas (hasta 5)
-
-Selector de unidades (métrico / imperial)
-
-Reintento sin perder input
-
-Persistencia entre recargas
-
-Cache backend con TTL
-
- Manejo de errores
-
-Se contemplan distintos escenarios:
-
-Ciudad no encontrada
-
-Error de red
-
-API key inválida
-
-Límite de peticiones
-
-Cada uno muestra un mensaje claro al usuario.
