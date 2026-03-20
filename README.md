@@ -166,9 +166,6 @@ http://localhost:3000
 
 <hr />
 
-<h2>Autor</h2>
-
-<p>Desarrollado como parte de una prueba técnica.</p>
 
 <hr />
 
